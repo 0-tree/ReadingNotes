@@ -17,6 +17,7 @@
 \usepackage{microtype}      % microtypography
 \usepackage{lipsum}
 
+\usepackage{graphicx}
 
 \title{Reading Notes: \cite{balestriero_mad_2018}}
 
@@ -34,13 +35,96 @@
 % \keywords{First keyword \and Second keyword \and More}
 
 
-\section{Abstract}
+\section{Key quotes}
+
+
+\subsection{Abstract}
 We build a rigorous bridge between deep networks (DNs) and approximation theory via spline functions and operators. Our key result is that a large class of DNs can be written as a composition of max- affine spline operators (MASOs), which provide a powerful portal through which to view and analyze their inner workings. For instance, conditioned on the input signal, the output of a MASO DN can be written as a simple affine transformation of the input. This implies that a DN constructs a set of signal- dependent, class-specific templates against which the signal is compared via a simple inner product; we explore the links to the classical theory of optimal classification via matched filters and the effects of data memorization. Going further, we propose a simple penalty term that can be added to the cost function of any DN learning algorithm to force the templates to be orthogonal with each other; this leads to significantly improved classification performance and reduced overfitting with no change to the DN architecture. The spline partition of the input signal space that is implicitly induced by a MASO directly links DNs to the theory of vector quantization (VQ) and K-means clustering, which opens up new geometric avenue to study how DNs organize signals in a hierarchical fashion. To validate the utility of the VQ interpretation, we develop and validate a new distance metric for signals and images that quantifies the difference between their VQ encodings. (This paper is a significantly expanded version of A Spline Theory of Deep Learning from ICML 2018.)
 
 
+\subsection{Concepts}
+
+\begin{itemize}
+	\item deep networks (DNs)
+	\item \href{https://www.encyclopediaofmath.org/index.php/Spline_approximation}{spline approximation theory}
+	\item max-affine spline operators (MASOs)
+	\item vector quantization
+\end{itemize}
 
 
- \bibliographystyle{unsrt}
- \bibliography{/Users/arthur/Documents/GitHub/Template_Tex/myLibrary.bib}
+\subsection{Results}
+
+\begin{enumerate}
+	\item From our proof that a large class of DNs can be written as a composition of MASOs, it follows immediately that, conditioned on the input signal, the output of a DN is a simple affine trans- formation of the input. We illustrate in Section 4 by deriving closed form expressions for the input/output mapping of CNNs and ResNets.
+		\begin{itemize}
+		\item we prove that a large class of DNs — including convolutional neural networks (CNNs) LeCun [1998], residual networks (ResNets) He et al. [2016], skip connection networks Srivas- tava et al. [2015], fully connected networks Pal and Mitra [1992], recurrent neural networks (RNNs) Graves [2013], scattering networks Bruna and Mallat [2013], inception networks Szegedy et al. [2017], and more — can be written as spline operators
+		\item moreover, when these DNs employ current standard-practice piecewise affine and convex nonlinearities (e.g., ReLU, absolute value, max-pooling, etc.) they can be written as the composition of max-affine spline operators (MASOs), which are a new extension of max-affine splines\footnote{An extremely useful feature of such a spline is that it circumvents the major complication of spline function approximation – the need to jointly optimize not only the spline function parameters but also the partition of the domain over which those parameters are constant (the “knots” of the spline). Instead, the partition of a max-affine spline is determined implicitly in terms of its slope and offset parameters.} Hannah and Dunson [2013], Magnani and Boyd [2009]
+	\end{itemize}
+	\item We prove that a composition of two or more MASOs is capable of approximating an arbitrary operator in Section 4.6.
+	\item The affine mapping formula enables us to interpret a MASO DN as constructing a set of signal- dependent, class-specific templates against which the signal is compared via a simple inner product. In Section 5 we relate DNs directly to the classical theory of optimal classification via matched filters and provide insights into the effects of data memorization Zhang et al. [2016].
+	\item We propose a simple penalty term that can be added to the cost function of any DN learning algorithm to force the templates to be orthogonal to each other. In Section 5.7, we show that this leads to significantly improved classification performance and reduced overfitting on standard test data sets like SVHN, CIFAR10, and CIFAR100 with no change to the DN architecture.
+	\item The partition of the input space induced by a MASO links DNs to the theory of vector quantization (VQ) and K-means clustering, which opens up a new geometric avenue to study how DNs cluster and organize signals in a hierarchical fashion. Section 6 studies the properties of the MASO partition.
+	\item Leveraging the fact that a DN considers two signals to be similar if they lie in the same MASO partition region, we develop a new VQ-based distance for signals and images in Section 6.6 that measures the difference between their VQ encodings. The distance is easily computed via backpropagation on the DN.
+\end{enumerate}
+
+
+\subsection{Thoughts}
+
+\begin{itemize}
+	\item Ongoing attempts to build a rigorous mathematical framework fall roughly into \emph{five} camps:
+	\begin{enumerate}
+		\item probing and measuring networks to visualize their inner workings Zeiler and Fergus [2014]
+		\item analyzing their properties such as expressive power Cohen et al. [2016], loss surface geometry Lu and Kawaguchi [2017], Soudry and Hoffer [2017], nuisance management Soatto and Chiuso [2016], sparsification Papyan et al. [2017], and generalization abilities
+		\item new mathematical frameworks that share some (but not all) common features with DNs Bruna and Mallat [2013]
+		\item probabilistic generative models from which specific DNs can be derived Arora et al. [2013], Patel et al. [2016]
+		\item information theoretic bounds Tishby and Zaslavsky [2015].
+	\end{enumerate}
+\end{itemize}
+
+
+\subsection{Other references}
+
+\begin{itemize}
+	\item relating DNs to splines
+		\subitem Montufar et al. [2014], Rister and Rubin [2017], Unser [2018]
+	\item optimization schemes
+		\subitem backpropagation Hecht-Nielsen [1992], Gradient Descent (GD) Rumelhart et al. [1988] being the simplest application of backpropagation, Nesterov Momentum Bengio et al. [2013] that uses the last performed updates in order to accelerate convergence and finally more complex adaptive methods with internal hyper-parameters updated based on the weights/updates statistics such as Adam Kingma and Ba [2014], Adadelta Zeiler [2012], Adagrad Duchi et al. [2011], RMSprop Tieleman and Hinton [2012]
+	\item DN classics
+		\subitem CNN LeCun et al. [1995], softmax de Brebisson and Vincent [2015].
+	\item DN news
+		\subitem spherical softmax  de Brebisson and Vincent [2015]
+	\item approximation theory and splines
+		\subitem is the study of how and how well functions can best be approximated using simpler functions Powell [1981]. A classical example of a simpler function is a spline $s : R^D \rightarrow R$ De Boor et al. [1978]. A major complication of function approximation with splines in general is the need to jointly optimize both the spline parameters $\alpha, \beta$ and the input domain partition $\Omega$ (the ``knots'' for a 1D spline) Bennett and Botkin [1985]. However, if a multivariate affine spline is constrained to be globally convex, then it can be rewritten as a max-affine spline Hannah and Dunson [2013], Magnani and Boyd [2009], meaning that they are adaptive partitioning splines Magnani and Boyd [2009].
+\end{itemize}
+
+
+\section{Diving in}
+
+
+\subsection{Mathematical  formalism}
+
+\subsubsection{Deep networks}
+
+Great notations and formalism in section 2 + Appendix A.\\
+Awesome visualizations and formalism for convolution as a matrix product, pooling, skip connections, residual layers in Appendix B.
+
+
+\subsubsection{Splines}
+
+Great notations and formalism in section 3 .\\
+
+\begin{figure}[h]
+\begin{center}
+	\includegraphics[width=.8\linewidth]{Figure/prop1}
+%	\caption{xxx}
+	\label{fig:prop1}
+\end{center}
+\end{figure}
+
+
+\bibliographystyle{unsrt}
+\bibliography{/Users/arthur/Documents/GitHub/Template_Tex/myLibrary.bib}
+
+
 
 \end{document}
