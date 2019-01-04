@@ -35,7 +35,7 @@
 % \keywords{First keyword \and Second keyword \and More}
 
 
-\section{Key quotes}
+\section{Key Quotes}
 
 
 \subsection{Abstract}
@@ -82,7 +82,7 @@ We build a rigorous bridge between deep networks (DNs) and approximation theory 
 \end{itemize}
 
 
-\subsection{Other references}
+\subsection{Other References}
 
 \begin{itemize}
 	\item relating DNs to splines
@@ -98,28 +98,91 @@ We build a rigorous bridge between deep networks (DNs) and approximation theory 
 \end{itemize}
 
 
-\section{Diving in}
+\section{Diving In}
 
 
-\subsection{Mathematical  formalism}
+\subsection{Mathematical  Formalism}
 
-\subsubsection{Deep networks}
+\subsubsection{Deep Networks}
 
-Great notations and formalism in section 2 + Appendix A.\\
+Great notations and formalism in section 2 and Appendix A.\\
 Awesome visualizations and formalism for convolution as a matrix product, pooling, skip connections, residual layers in Appendix B.
 
 
 \subsubsection{Splines}
 
-Great notations and formalism in section 3 .\\
+Great notations and formalism in section 3 and Appendix C.\\
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Figure/def_maso}
+			\caption{Max-Affine Spline Operators.}
+		\label{fig:def_maso}
+	\end{center}
+\end{figure}
 
 \begin{figure}[h]
 \begin{center}
-	\includegraphics[width=.8\linewidth]{Figure/prop1}
+	\includegraphics[width=.8\linewidth]{Figure/prop3p1}
 %	\caption{xxx}
-	\label{fig:prop1}
+	\label{fig:prop3p1}
 \end{center}
 \end{figure}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Figure/prop3p2}
+		%	\caption{xxx}
+		\label{fig:prop3p2}
+	\end{center}
+\end{figure}
+
+
+\subsection{Deep Networks are Compositions of Spline Operators}
+
+Proofs in Appendix D. Specifically D.2 which provides MASO forms for layers affine transform + activation, linear skip-connection, ResNet.
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Figure/prop4p1}
+		%	\caption{xxx}
+		\label{fig:prop4p1}
+	\end{center}
+\end{figure}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Figure/prop4p2}
+		%	\caption{xxx}
+		\label{fig:prop4p2}
+	\end{center}
+\end{figure}
+
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Figure/prop4p3}
+		%	\caption{xxx}
+		\label{fig:prop4p3}
+	\end{center}
+\end{figure}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=.8\linewidth]{Figure/prop4p4}
+		%	\caption{xxx}
+		\label{fig:prop4p4}
+	\end{center}
+\end{figure}
+
+
+
+\section{Typos}
+
+\begin{itemize}
+	\item wrong sign for leaky ReLU in Prop 4.2
+\end{itemize}
+
 
 
 \bibliographystyle{unsrt}
