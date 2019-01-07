@@ -85,23 +85,7 @@ We build a rigorous bridge between deep networks (DNs) and approximation theory 
 \end{itemize}
 
 
-\subsection{Other References}
-
-\begin{itemize}
-	\item relating DNs to splines
-		\subitem Montufar et al. [2014], Rister and Rubin [2017], Unser [2018]
-	\item optimization schemes
-		\subitem backpropagation Hecht-Nielsen [1992], Gradient Descent (GD) Rumelhart et al. [1988] being the simplest application of backpropagation, Nesterov Momentum Bengio et al. [2013] that uses the last performed updates in order to accelerate convergence and finally more complex adaptive methods with internal hyper-parameters updated based on the weights/updates statistics such as Adam Kingma and Ba [2014], Adadelta Zeiler [2012], Adagrad Duchi et al. [2011], RMSprop Tieleman and Hinton [2012]
-	\item ML classics
-		\subitem matched filterbank is the optimal classifier for deterministic signals in additive white Gaussian noise Rabiner and Gold [1975], ZCA whitening Nam et al. [2014], vector quantization Gersho and Gray [2012], connection between max-affine splines and K-means (a particular flavor of VQ) has been pointed out in Magnani and Boyd [2009] in the least-squares regression setting, K-means Jain [2010]
-	\item DN classics
-		\subitem CNN LeCun et al. [1995], softmax de Brebisson and Vincent [2015], autoencoders Vincent et al. [2008], generative adversarial network (GAN) Goodfellow et al. [2014], recurrent neural network (RNN) Graves [2013], the ability of certain DNs to approximate an arbitrary functional/operator mapping has been well established Cybenko [1989],  LSTMs and GRUs Cho et al. [2014], Chung et al. [2014], Graves [2013], study of adversarial examples Szegedy et al. [2013], batch normalization Ioffe and Szegedy [2015], probabilistic models for deep learning Patel et al. [2016], dropout Gal and Ghahramani [2016]
-	\item DN news
-		\subitem spherical softmax  de Brebisson and Vincent [2015], the capability of a shallow DN ($L = 2$) with many partition regions (large $R^{(1)}$) to approximate a complicated operator has been studied numerically in Zhang et al. [2016]
-	\item approximation theory and splines
-		\subitem is the study of how and how well functions can best be approximated using simpler functions Powell [1981]. A classical example of a simpler function is a spline $s : R^D \rightarrow R$ De Boor et al. [1978]. A major complication of function approximation with splines in general is the need to jointly optimize both the spline parameters $\alpha, \beta$ and the input domain partition $\Omega$ (the ``knots'' for a 1D spline) Bennett and Botkin [1985]. However, if a multivariate affine spline is constrained to be globally convex, then it can be rewritten as a max-affine spline Hannah and Dunson [2013], Magnani and Boyd [2009], meaning that they are adaptive partitioning splines Magnani and Boyd [2009].
-\end{itemize}
-
+ 
 
 \section{Diving In}
 

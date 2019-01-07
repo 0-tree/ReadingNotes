@@ -1,0 +1,82 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% style template inspired from Overleaf's arXiv template:
+% https://www.overleaf.com/latex/templates/style-and-template-for-preprints-arxiv-bio-arxiv/vknsbpqnxqsk
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{/Users/arthur/Documents/GitHub/Template_Tex/arxiv_light} % see this for how to import cleanly : https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\usepackage{graphicx}
+
+\title{A Map of Cited References}
+
+\author{Arthur Roullier}
+
+\begin{document}
+\maketitle
+
+% \begin{abstract}
+%
+% \end{abstract}
+
+% keywords can be removed
+% \keywords{First keyword \and Second keyword \and More}
+
+In this note I gather together all interesting references cited in articles I have read.
+
+\section{Machine Learning (not DL)}
+
+\begin{itemize}
+	\item ML classics
+		\subitem matched filterbank is the optimal classifier for deterministic signals in additive white Gaussian noise Rabiner and Gold [1975]-\cite{balestriero_mad_2018}, ZCA whitening Nam et al. [2014]-\cite{balestriero_mad_2018}, vector quantization Gersho and Gray [2012]-\cite{balestriero_mad_2018}, connection between max-affine splines and K-means (a particular flavor of VQ) has been pointed out in Magnani and Boyd [2009]-\cite{balestriero_mad_2018} in the least-squares regression setting, K-means Jain [2010]-\cite{balestriero_mad_2018}
+\end{itemize}
+
+
+\section{Deep Learning}
+
+\begin{itemize}
+	\item relating DNs to splines
+		\subitem Montufar et al. [2014]-\cite{balestriero_mad_2018}, Rister and Rubin [2017]-\cite{balestriero_mad_2018}, Unser [2018]-\cite{balestriero_mad_2018}
+	\item optimization schemes
+		\subitem backpropagation Hecht-Nielsen [1992]-\cite{balestriero_mad_2018}, Gradient Descent (GD) Rumelhart et al. [1988]-\cite{balestriero_mad_2018} being the simplest application of backpropagation, Nesterov Momentum Bengio et al. [2013]-\cite{balestriero_mad_2018} that uses the last performed updates in order to accelerate convergence and finally more complex adaptive methods with internal hyper-parameters updated based on the weights/updates statistics such as Adam Kingma and Ba [2014]-\cite{balestriero_mad_2018}, Adadelta Zeiler [2012]-\cite{balestriero_mad_2018}, Adagrad Duchi et al. [2011]-\cite{balestriero_mad_2018}, RMSprop Tieleman and Hinton [2012]-\cite{balestriero_mad_2018}
+	\item DN classics
+		\subitem CNN LeCun et al. [1995]-\cite{balestriero_mad_2018}, softmax de Brebisson and Vincent [2015]-\cite{balestriero_mad_2018}, autoencoders Vincent et al. [2008]-\cite{balestriero_mad_2018}, generative adversarial network (GAN) Goodfellow et al. [2014]-\cite{balestriero_mad_2018}, recurrent neural network (RNN) Graves [2013]-\cite{balestriero_mad_2018}, the ability of certain DNs to approximate an arbitrary functional/operator mapping has been well established Cybenko [1989]-\cite{balestriero_mad_2018},  LSTMs and GRUs Cho et al. [2014]-\cite{balestriero_mad_2018}, Chung et al. [2014]-\cite{balestriero_mad_2018}, Graves [2013]-\cite{balestriero_mad_2018}, study of adversarial examples Szegedy et al. [2013]-\cite{balestriero_mad_2018}, batch normalization Ioffe and Szegedy [2015]-\cite{balestriero_mad_2018}, probabilistic models for deep learning Patel et al. [2016]-\cite{balestriero_mad_2018}, dropout Gal and Ghahramani [2016]-\cite{balestriero_mad_2018}
+	\item DN news
+		\subitem spherical softmax  de Brebisson and Vincent [2015]-\cite{balestriero_mad_2018}, the capability of a shallow DN ($L = 2$) with many partition regions (large $R^{(1)}$) to approximate a complicated operator has been studied numerically in Zhang et al. [2016]-\cite{balestriero_mad_2018}
+	\item DN understanding (roughly \emph{five} camps (\cite{balestriero_mad_2018}))
+		\subitem probing and measuring networks to visualize their inner workings Zeiler and Fergus [2014]-\cite{balestriero_mad_2018}
+		\subitem analyzing their properties such as expressive power Cohen et al. [2016]-\cite{balestriero_mad_2018}, loss surface geometry Lu and Kawaguchi [2017]-\cite{balestriero_mad_2018}, Soudry and Hoffer [2017]-\cite{balestriero_mad_2018}, nuisance management Soatto and Chiuso [2016]-\cite{balestriero_mad_2018}, sparsification Papyan et al. [2017]-\cite{balestriero_mad_2018}, and generalization abilities
+		\subitem new mathematical frameworks that share some (but not all) common features with DNs Bruna and Mallat [2013]-\cite{balestriero_mad_2018}
+		\subitem probabilistic generative models from which specific DNs can be derived Arora et al. [2013]-\cite{balestriero_mad_2018}, Patel et al. [2016]-\cite{balestriero_mad_2018}
+		\subitem information theoretic bounds Tishby and Zaslavsky [2015]-\cite{balestriero_mad_2018}.
+\end{itemize}
+
+
+\section{Approximation Theory}
+
+\begin{itemize}
+	\item approximation theory and splines
+		\subitem approximation theory Powell [1981]-\cite{balestriero_mad_2018}. spline De Boor et al. [1978]-\cite{balestriero_mad_2018}. A major complication of function approximation with splines in general is the need to jointly optimize both the spline parameters $\alpha, \beta$ and the input domain partition $\Omega$ (the ``knots'' for a 1D spline) Bennett and Botkin [1985]-\cite{balestriero_mad_2018}. However, if a multivariate affine spline is constrained to be globally convex, then it can be rewritten as a max-affine spline Hannah and Dunson [2013]-\cite{balestriero_mad_2018}, Magnani and Boyd [2009]-\cite{balestriero_mad_2018}, meaning that they are adaptive partitioning splines Magnani and Boyd [2009]-\cite{balestriero_mad_2018}.
+\end{itemize}
+
+
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{/Users/arthur/Documents/GitHub/Template_Tex/myLibrary.bib}
+
+
+
+\end{document}
