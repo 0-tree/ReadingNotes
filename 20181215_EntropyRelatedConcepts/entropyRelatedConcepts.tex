@@ -1,0 +1,272 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% style template inspired from Overleaf's arXiv template:
+% https://www.overleaf.com/latex/templates/style-and-template-for-preprints-arxiv-bio-arxiv/vknsbpqnxqsk
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{/Users/arthur/Documents/GitHub/Template_Tex/arxiv_light}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+
+\title{A Map of Entropy Related Concepts}
+
+\author{Arthur Roullier}
+
+\begin{document}
+\maketitle
+
+% abstract can be removed
+% \begin{abstract}
+% \lipsum[1]
+% \end{abstract}
+
+% keywords can be removed
+% \keywords{First keyword \and Second keyword \and More}
+
+
+\section{Concepts}
+
+\subsection{Entropy of a Random Variable / a Distribution}
+Discrete case.\\
+Let $X$ be a random variable over $\{x_0, \dots, x_n\}$ with distribution $p^X$ such that $p^X(X=x_i) = p^X_i$.\\
+The entropy of $p^X$ (or $X$) is
+
+\begin{eqnarray*}
+    H(X) = H(p^X) =& E_X[-\log(p(X))] \\
+                =& - \sum_{i=0}^n p^X_i \log(p^X_i)
+\end{eqnarray*}
+
+\subsection{Joint Entropy of a Vector of Random Variables / a Joint Distribution}
+Discrete case. Two variables: generalization straightforward. \\
+Let $X,Y$ be  random variables over $\{x_0, \dots, x_n\}$ and $\{y_0, \dots, y_m\}$ with joint distribution $p$ such that $p(X=x_i,Y=y_j) = p_{i,j}$.\\
+The entropy of $p$ (or the vector $[X,Y]$) is
+
+\begin{eqnarray*}
+    H([X,Y]) = H(p) =& E_{X,Y}[-\log(p(X,Y))] \\
+                    =& - \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(p_{i,j})
+\end{eqnarray*}
+
+
+\subsection{Conditional Entropy of a Random Variable given Another / a  Distribution given Another}
+Discrete case.\\
+Let $X,Y$ be  random variables over $\{x_0, \dots, x_n\}$ and $\{y_0, \dots, y_m\}$ with joint distribution $p$ such that $p(X=x_i,Y=y_j) = p_{i,j}$ and marginal distributions $p^X$ and $p^Y$ such that $p^X(X = x_i) = p^X_i$ and $p^Y(Y = y_j) = p^Y_j$.\\
+The conditional entropy of $p^Y$ given $p^X$ is
+
+\begin{eqnarray*}
+	H(Y|X) = H(p^Y|p^X) =& E_{X,Y}[-\log(\frac{p(X,Y)}{p^X(X)})] \\
+	=& - \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(\frac{p_{i,j}}{p^X_i})
+\end{eqnarray*}
+
+
+\subsection{Mutual Information between two Random Variables / two  Distributions}
+Discrete case.\\
+Let $X,Y$ be  random variables over $\{x_0, \dots, x_n\}$ and $\{y_0, \dots, y_m\}$ with joint distribution $p$ such that $p(X=x_i,Y=y_j) = p_{i,j}$, and marginal distributions $p^X$ and $p^Y$ such that $p^X(X = x_i) = p^X_i$ and $p^Y(Y = y_j) = p^Y_j$.\\
+The mutual information between $X$ and $Y$ (I would also say between marginals $p^X$ and $p^Y$) is
+
+\begin{eqnarray*}
+    I([X,Y]) = I(p) =& E_{X,Y}[-\log(\frac{p^X(X)p^Y(Y)}{p(X,Y)})] \\
+                    =& - \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(\frac{p^X_i p^Y_j}{p_{i,j}})
+\end{eqnarray*}
+
+
+
+\subsection{Kullback-Leibler Divergence (a.k.a. Relative Entropy) between two Distributions}
+
+Discrete case.\\
+Let $X,Y$ be  random variables over the same space  $\{z_0, \dots, z_n\}$  with  marginal distributions $p^X$ and $p^Y$ such that $p^X(X = z_i) = p^X_i$ and $p^Y(Y = z_i) = p^Y_i$.\\
+The Kullback-Leibler divergence between $p^X$ and $p^Y$ is
+
+\begin{eqnarray*}
+    KL(p^X||p^Y) =& E_{X}[-\log(\frac{p^Y(X)}{p^X(X)})] \\
+                    =& - \sum_{i=0}^n  p^X_{i} \log(\frac{p^Y_i}{p^X_i})
+\end{eqnarray*}
+
+
+\subsection{Cross-Entropy between two Random Variables / two Distributions}
+
+Discrete case.\\
+Let $X,Y$ be  random variables over the same space  $\{z_0, \dots, z_n\}$  with  marginal distributions $p^X$ and $p^Y$ such that $p^X(X = z_i) = p^X_i$ and $p^Y(Y = z_i) = p^Y_i$.\\
+The cross-entropy between $p^X$ and $p^Y$ is
+
+\begin{eqnarray*}
+	H(X,Y) = H(p^X,p^Y) =& E_{X}[-\log(p^Y(X))] \\
+	=& - \sum_{i=0}^n  p^X_{i} \log(p^Y_i)
+\end{eqnarray*}
+
+Note: do not mistake $H(X,Y)$ for $H([X,Y])$ and vice-versa.
+
+
+\subsection{(Log-)Likelihood Function of a Distribution's Parameter Given a Set of Realizations}
+
+Discrete case.\\
+Let $X$ be a random variable over $\{x_0, \dots, x_n\}$ with distribution $p^X_\theta$, parameterized by $\theta$. Let $D = \big \{\{X = x_{i_k}\} \big \}_{k=1..K}$ be $K$ i.i.d. realizations of $X$.\\
+The likelihood function of the distribution's parameter (it is a function of $\theta$) given $D$ is
+
+\begin{eqnarray*}
+	\mathcal{L}_D(\theta) =& p^X_\theta(D) \\
+							=& \prod_{k=1}^K p^X_\theta(X=x_{i_k})
+\end{eqnarray*}
+
+And the log-likelihood is
+
+\begin{eqnarray*}
+	\ell_D(\theta) = \log(\mathcal{L}_D(\theta)) = \sum_{k=1}^K \log(p^X_\theta(X=x_{i_k}))
+\end{eqnarray*}
+
+\subsection{Logistic Function}
+
+Real case. Extension to $\mathbb{R}^n$ straightforward using a dot product in the $\exp$.\\
+Let $x \in \mathbb{R}$, a logistic function has the form
+
+\begin{eqnarray*}
+	f(x) =& \frac{L}{1+e^{-k(x-x_0)}} \\
+			=& \frac{L e^{k(x-x_0)}}{1+e^{k(x-x_0)}} \\
+\end{eqnarray*}
+
+\subsection{Softmax Function}
+
+Let $ x \in \mathbb{R}^n$. The softmax function outputs a vector of same shape, with $i$th entry
+
+\begin{eqnarray*}
+	[f(x)]_i =& \frac{e^{x_i}}{\sum_{j=1}^ne^x_j}
+\end{eqnarray*}
+
+
+\subsection{Logistic Loss in Classification}
+
+Binary classification.\\
+Let $f$ be a classifier, and $(x,y)$ be a truth input-target pair with $y \in \{-1,1\}$. The logistic loss for predicting $f(x) \in [-1,1]$ is
+
+\begin{eqnarray*}
+	L_{logistic}(f(x),y) \propto  \log(1+e^{-yf(x)}) \\
+\end{eqnarray*}
+
+
+\subsection{Cross-Entropy Loss in Classification}
+
+Binary classification.\\
+Let $f$ be a classifier, and $(x,y)$ be a truth input-target pair with $y \in \{0,1\}$. The cross-entropy loss for predicting $f(x) \in [0,1]$ is
+
+\begin{eqnarray*}
+	L_{CE}(f(x),y) = -y \log(f(x)) - (1-y) \log (1-f(x)) \\
+\end{eqnarray*}
+
+
+Multiclass classification.\\
+Let $f$ be a classifier, and $(x,y)$ be a truth input-target pair with $y$ a one-hot vector from $\{0,1\}^K$ such that $\exists ! k | y_k =1$. The cross-entropy loss for predicting $f(x) \in [0,1]^K$ (where usually $\sum_k f(x)_k = 1$ also holds) is
+
+\begin{eqnarray*}
+	L_{CE}(f(x),y) = - \sum_{k=1}^K y_k \log(f(x)_k) \\
+\end{eqnarray*}
+
+Note that we recover the binary case, provided we output a sum-to-one pair of scores for classes $0/1$.
+
+\subsection{Logistic Regression}
+
+Binary classification. Can generalize to mutliclass and/or ordered outputs.\\
+Let a binary classification problem of input space $\mathbb{R}^n \ni x$ (including a constant dimension for intercepts) and output space $[0,1] \ni y$. The term logistic regression mainly characterizes  the class of hypotheses $\mathcal{H}$ searched over, but it also often implies the use of the cross-entropy loss as loss function $L$:\\
+
+\begin{eqnarray*}
+	\mathcal{H} = \left\{ f_\theta | f_\theta(x) = \frac{1}{1+e^{\theta ^\top x}} , \theta \in \mathbb{R}^n \right\}\\
+\end{eqnarray*}
+
+\begin{eqnarray*}
+	L = L_{CE}\\
+\end{eqnarray*}
+
+Note that logistic regression is not related to the logistic loss \emph{a priori}.
+
+
+\section{Links}
+
+
+\subsection{Cross-Entropy, Kullback-Leibler Divergence, Entropy}
+
+When the following quantities are well defined, we have
+
+\begin{eqnarray*}
+	H(p^X) + KL(p^X||p^Y) =& - \sum_{i=0}^n  p^X_{i} \log(p^X_i) - \sum_{i=0}^n  p^X_{i} \log(\frac{p^Y_i}{p^X_i})\\
+										=& - \sum_{i=0}^n  p^X_{i} \log(p^Y_i)\\
+										=& H(p^X,p^Y)
+\end{eqnarray*}
+
+
+
+
+\subsection{Logistic Loss, Logistic Regression}
+
+None! The loss function usually used in logistic regression (and softmax regressions alike) is the cross-entropy loss. The major feature of the logistic regression is its hypothesis space though.
+
+
+
+
+\subsection{Cross-Entropy Minimization, Likelihood Maximization}
+
+Discrete case.\\
+Let $q$ be a parameterized probability over $\{z_0, \dots, z_n\}$ such that $q(z_i) = q_i$ ($q_i$ are the parameters), and $p$ the empirical probability obtained from an i.i.d. dataset $D = \big \{\{Z = z_{i_k}\} \big \}_{k=1..K}$ such that $p(z_i) = p_i = \frac{\#Z=z_i}{K}$. The likelihood of $q$ given the realizations $D$ is by definition
+
+\begin{eqnarray*}
+	\mathcal{L}_D(q) =&    \prod_{k=1}^K q_{i_k}  \\
+	        =&  q_1^{Kp_1} \dots q_N ^ {Kp_N} \\
+	        =& \prod_{i=1}^N q_i^{Kp_i}
+\end{eqnarray*}
+
+And the loglikelihood is
+
+\begin{eqnarray*}
+	\ell_D(q) =&  \sum_{i=1}^N K p_i \log(q_i) \\
+	        	=& -K  H(p,q)
+\end{eqnarray*}
+
+So learning a distribution by  likelihood maximization is equivalent to learning by cross-entropy minimization.
+
+
+
+\subsection{Mutual Information,  Kullback–Leibler Divergence}
+
+When the following quantities are well defined, we have
+
+\begin{eqnarray*}
+    I([X,Y]) = I(p) =& E_{X,Y}[-\log(\frac{p^X(X)p^Y(Y)}{p(X,Y)})] \\
+=& KL(p||p^X p^Y) \\
+\end{eqnarray*}
+
+
+
+\subsection{Mutual Information, Entropy, Joint Entropy, Conditional Entropy}
+
+
+When the following quantities are well defined, we have
+
+\begin{eqnarray*}
+    I([X,Y]) = I(p) =& E_{X,Y}[-\log(\frac{p^X(X)p^Y(Y)}{p(X,Y)})] \\
+=& - \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(\frac{p^X_i p^Y_j}{p_{i,j}})  \\
+=& - \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(p^X_i) - \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(p^Y_j)  +  \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(p_{i,j})  \\ 
+=& - \sum_{i=0}^n \sum_{j=0}^m p^X_i p^{Y|X}_j \log(p^X_i) - \sum_{i=0}^n \sum_{j=0}^m p^Y_j p^{X|Y}_i \log(p^Y_j)  +  \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(p_{i,j})  \\ 
+=& -\sum_{j=0}^m  p^{Y|X}_j  \sum_{i=0}^n  p^X_i \log(p^X_i) - \sum_{i=0}^n  p^{X|Y}_i \sum_{j=0}^m p^Y_j  \log(p^Y_j)  +  \sum_{i=0}^n \sum_{j=0}^m p_{i,j} \log(p_{i,j})  \\ 
+=& H(X) + H(Y) - H([X,Y])
+\end{eqnarray*}
+
+And similarly
+
+\begin{eqnarray*}
+	I([X,Y]) = I(p) =&  H(X) - H(X|Y) \\
+			=&  H(Y) - H(Y|X) \\
+			=&  H([X,Y]) - H(X|Y) - H(Y|X) \\
+\end{eqnarray*}
+
+
+% \bibliographystyle{unsrt}
+% \bibliography{references}
+
+\end{document}
