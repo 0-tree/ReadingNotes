@@ -1,0 +1,93 @@
+\documentclass{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% style template inspired from Overleaf's arXiv template:
+% https://www.overleaf.com/latex/templates/style-and-template-for-preprints-arxiv-bio-arxiv/vknsbpqnxqsk
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{/Users/arthur/Documents/Git/Template_Tex/arxiv_light} % see this for how to import cleanly : https://tex.stackexchange.com/questions/1137/where-do-i-place-my-own-sty-or-cls-files-to-make-them-available-to-all-my-te
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+
+\usepackage{graphicx}
+
+\title{GANs vs. AEs.}
+
+\author{Arthur Roullier}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+	With a closer look, it seems both worlds follow an organic evolution path, but that both have a lot in common. Let's see that.
+
+This note may turn into a \emph{summary of Conditional Generative Methods}!
+
+\end{abstract}
+
+% keywords can be removed
+% \keywords{First keyword \and Second keyword \and More}
+
+
+\section{Families}
+
+Approaches that allow conditionning on a given input (not class label) will be highlighted in \textbf{bold}.
+
+
+
+\subsection{AEs}
+
+
+\textbf{Autoencoder}: transformation from data to specific target. \emph{U-Net} \cite{ronneberger_u-net:_2015}
+
+Variational Autencoder: generation from random noise to target domain
+
+(other?) Conditional Variational Autencoder: generation from random noise + class to target domain. http://ijdykeman.github.io/ml/2016/12/21/cvae.html
+
+
+
+\subsection{GANs}
+
+
+GAN: generation from random noise to target domain
+
+\textbf{Conditional GAN}: generation from data to specific target. \emph{pix2pix} \cite{isola_image--image_2016}
+
+(other?) Conditional GAN: generation from random noise + class to target domain
+
+\textbf{Cycle GAN}: generation from data to domain (``unsupervised pairs'', not elaborated on by now, as we do have supervised labels). https://www.youtube.com/watch?v=AxrKVfjSBiA
+
+
+
+\subsection{Alternatives}
+
+PixelCNN. Model $P(X)$ using the chain rule over the dimensions, so generates outputs recursively. Easy explanation \href{https://youtu.be/FeJT8ejgsL0?t=763}{here}.
+
+\textbf{Conditional PixelCNN}. Currently unclear how we can do conditional generation efficiently. Read \cite{oord_conditional_2016} (not read yet) for more.
+
+
+
+\section{Conceptual Differences}
+
+
+Looks like a variation of one form has similar goal than a variation in the second form.
+This \href{https://www.reddit.com/r/MachineLearning/comments/4r3pjy/variational_autoencoders_vae_vs_generative/}{post }  highlights that AE are more for latent modeling and GAN more for generation.
+
+Yeah! A quote from this  \href{https://www.reddit.com/r/MachineLearning/comments/4r3pjy/variational_autoencoders_vae_vs_generative/}{post} that expresses my feeling: ``which really boils down to adversarial loss is better than mean-squared loss''.
+
+
+\bibliographystyle{unsrt}
+\bibliography{/Users/arthur/Documents/Git/Template_Tex/myLibrary.bib}
+
+
+
+\end{document}
